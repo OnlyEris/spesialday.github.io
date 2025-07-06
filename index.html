@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/2589/2589175.png"/>
+  <title>Spesial day</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      text-align: center;
+      padding: 50px;
+      background-image: url('image/bg.png');
+      color: #000000;
+    }
+    h1 {
+      color: #000000;
+    }
+    .btn {
+      padding: 15px 30px;
+      font-size: 18px;
+      margin: 20px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .btn:hover {
+      transform: scale(1.05);
+    }
+    .blue {
+      background-color: #007bff;
+      color: white;
+    }
+    .red {
+      background-color: #dc3545;
+      color: white;
+    }
+    .note-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: white;
+      border: 2px solid #007bff;
+      border-radius: 10px;
+      padding: 30px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      max-width: 400px;
+      z-index: 999;
+    }
+    .note-popup h2 {
+      margin-top: 0;
+      color: #007bff;
+    }
+    .overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 998;
+    }
+    .close-btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hai Nareswari, I wanna say something for you🌸</h1>
+  <p>Baca catatan dibawah dulu ya, sebelum milih love biru atau merah</p>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="note-popup" id="notePopup">
+    <h2>Catatan 💌</h2>
+    <p>Terima Kasih ya akhir-akhir ini sudah meluangkan banyak waktu untuk aku, you're my ocean painted blue, aku cuma mau ngomong kalo "aku suka sama kamu".</p>
+    <p>Click 💙(kalau kamu suka juga) & ❤️(Kalau tidak)</p>
+    <button class="close-btn" onclick="hideNote()">Tutup</button>
+  </div>
+
+  <button class="btn blue" onclick="kirimJawaban(true)">💙</button>
+  <button class="btn red" onclick="kirimJawaban(false)">❤️</button>
+  <br><br>
+  <button class="btn" onclick="showNote()">📌 Baca Catatan</button>
+
+  <script>
+    function kirimJawaban(diterima) {
+      const nomor = "6289611312354"; 
+      const pesan = diterima
+        ? "7 Juli 2025💙"
+        : "Merah warna cinta❤️";
+
+      const linkWa = `https://api.whatsapp.com/send?phone=${nomor}&text=${encodeURIComponent(pesan)}`;
+      window.open(linkWa, "_blank");
+    }
+
+    function showNote() {
+      document.getElementById("overlay").style.display = "block";
+      document.getElementById("notePopup").style.display = "block";
+    }
+
+    function hideNote() {
+      document.getElementById("overlay").style.display = "none";
+      document.getElementById("notePopup").style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
